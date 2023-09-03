@@ -25,6 +25,8 @@ public class MainGame : MonoBehaviour
     public void checkAnswer(long submission) {
         if (submission == answer) {
             generateNewQuestion();
+        } else {
+            GameOver.instance.gameOver(answer);
         }
     }
 
