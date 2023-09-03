@@ -9,4 +9,9 @@ public class MainMenuActions : MonoBehaviour
         MainGame.updateQuestionCreateFunction(Addition.generateAdditionQuestion);
         SceneManager.LoadScene("Game");
     }
+
+    public static void multiplicationGame() {
+        MainGame.updateQuestionCreateFunction(Multiplication.generateQuestion);
+        SceneManager.LoadScene("Game");
+    }
 }
