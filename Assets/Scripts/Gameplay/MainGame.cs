@@ -13,7 +13,6 @@ public class MainGame : MonoBehaviour
     public (int, int) range = (1, 100);
 
     int answer;
-    bool newQuestionRequired = false;
 
     void Awake() {
         mainGame = this;
@@ -23,15 +22,11 @@ public class MainGame : MonoBehaviour
         generateNewQuestion();
     }
 
-    void Update() {
-        if (newQuestionRequired) {
-            generateNewQuestion();
-        }
-    }
-
     public void checkAnswer(long submission) {
         if (submission == answer) {
             generateNewQuestion();
+        } else {
+            GameOver.instance.gameOver(answer);
         }
     }
 
