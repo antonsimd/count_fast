@@ -11,12 +11,33 @@ public class MainGame : MonoBehaviour
 
     // Min and max range for the numbers
     public (int, int) range = (1, 100);
-    // Start is called before the first frame update
+
+    int answer;
+    bool newQuestionRequired = false;
+
     void Awake() {
         mainGame = this;
     }
 
     void Start() {
-        Addition.generateAdditionQuestion();
+        generateNewQuestion();
+    }
+
+    void Update() {
+        if (newQuestionRequired) {
+            generateNewQuestion();
+        }
+    }
+
+    public void checkAnswer(long submission) {
+        if (submission == answer) {
+            generateNewQuestion();
+        }
+    }
+
+    // Only works with addition
+    // TODO: fix after adding other operations
+    void generateNewQuestion() {
+        answer = Addition.generateAdditionQuestion();
     }
 }
