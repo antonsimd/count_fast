@@ -6,24 +6,39 @@ using TMPro;
 public class KeyboardInput : MonoBehaviour
 {
     public TextMeshProUGUI answerText;
-    string answer = null;
+    string answer = "";
     string text = "= ";
 
     void Start() {
-        updateText();
+        clearText();
     }
 
-    public void updateText(int number = -1) {
+    public void writeNumber(int number = -1) {
         if (number != -1) {
-            if (answer == null) {
+            if (answer == "") {
                 answer = number.ToString();
             } else {
                 answer += number.ToString();
             }
         } else {
-            answer = null;
+            answer = "";
         }
 
-        answerText.text = answer == null ? text : text + answer;
+        updateText();
+    }
+
+    public void backspace() {
+        if (answer.Length != 0) {
+            answer = answer.Remove(answer.Length - 1, 1);
+            updateText();
+        }
+    }
+
+    void clearText() {
+        answer = "";
+        updateText();
+    }
+    void updateText() {
+        answerText.text = text + answer;
     }
 }
