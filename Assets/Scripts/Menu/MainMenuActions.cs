@@ -24,4 +24,9 @@ public class MainMenuActions : MonoBehaviour
         MainGame.updateQuestionCreateFunction(Division.generateQuestion);
         SceneManager.LoadScene("Game");
     }
+
+    public static void randomGame() {
+        MainGame.updateQuestionCreateFunction(RandomGame.generateQuestion);
+        SceneManager.LoadScene("Game");
+    }
 }

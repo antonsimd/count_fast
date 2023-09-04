@@ -16,7 +16,8 @@ public class MainGame : MonoBehaviour
     int answer;
 
     // Variable to store the execute function
-    static Func<int> questionCreateFunction = Addition.generateQuestion;
+    // Random by default
+    static Func<int> questionCreateFunction = RandomGame.generateQuestion;
 
     public static void updateQuestionCreateFunction(Func<int> action) {
         questionCreateFunction = action;
@@ -38,8 +39,6 @@ public class MainGame : MonoBehaviour
         }
     }
 
-    // Only works with addition
-    // TODO: fix after adding other operations
     void generateNewQuestion() {
         answer = questionCreateFunction();
     }
