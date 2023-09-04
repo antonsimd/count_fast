@@ -11,6 +11,7 @@ public class KeyboardInput : MonoBehaviour
 
     public TextMeshProUGUI answerText;
     public GameObject errorText;
+    public GameObject enterNumberText;
 
     string answer = "";
     string text = POSITIVE_NUMBER;
@@ -20,17 +21,13 @@ public class KeyboardInput : MonoBehaviour
         clearText();
     }
 
-    public void writeNumber(int number = -1) {
-        if (number != -1) {
-            if (answer == "") {
-                answer = number.ToString();
-            } else if (answer.Length >= maxLongLength) {
-                errorText.SetActive(true);
-            } else {
-                answer += number.ToString();
-            }
+    public void writeNumber(int number) {
+        enterNumberText.SetActive(false);
+
+        if (answer.Length >= maxLongLength) {
+            errorText.SetActive(true);
         } else {
-            answer = "";
+            answer += number.ToString();
         }
 
         updateText();
@@ -48,6 +45,11 @@ public class KeyboardInput : MonoBehaviour
     }
 
     public void submitAnswer() {
+        if (answer == "") {
+            enterNumberText.SetActive(true);
+            return;
+        }
+
         long answerInt = long.Parse(answer);
 
         answerInt *= answerNegative == true ? -1 : 1;
