@@ -16,7 +16,7 @@ public class MainGame : MonoBehaviour
     int answer;
 
     // Variable to store the execute function
-    static Func<int> questionCreateFunction;
+    static Func<int> questionCreateFunction = Addition.generateAdditionQuestion;
 
     public static void updateQuestionCreateFunction(Func<int> action) {
         questionCreateFunction = action;
