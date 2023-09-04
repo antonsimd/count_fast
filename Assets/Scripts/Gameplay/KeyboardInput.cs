@@ -6,12 +6,15 @@ using TMPro;
 public class KeyboardInput : MonoBehaviour
 {
     const int maxLongLength = 18;
+    const string POSITIVE_NUMBER = "= ";
+    const string NEGATIVE_NUMBER = "= - ";
 
     public TextMeshProUGUI answerText;
     public GameObject errorText;
 
     string answer = "";
-    string text = "= ";
+    string text = POSITIVE_NUMBER;
+    bool answerNegative = false;
 
     void Start() {
         clearText();
@@ -46,12 +49,27 @@ public class KeyboardInput : MonoBehaviour
 
     public void submitAnswer() {
         long answerInt = long.Parse(answer);
+
+        answerInt *= answerNegative == true ? -1 : 1;
         clearText();
         MainGame.mainGame.checkAnswer(answerInt);
     }
 
-    void clearText() {
+    public void toggleSign() {
+        if (answerNegative == false) {
+            text = NEGATIVE_NUMBER;
+        } else {
+            text = POSITIVE_NUMBER;
+        }
+
+        answerNegative = !answerNegative;
+        updateText();
+    }
+
+    public void clearText() {
         answer = "";
+        answerNegative = false;
+        text = POSITIVE_NUMBER;
         updateText();
         errorText.SetActive(false);
     }
