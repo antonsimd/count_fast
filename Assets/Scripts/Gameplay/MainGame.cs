@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class MainGame : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class MainGame : MonoBehaviour
     public (int, int) range = (1, 100);
 
     int answer;
+
+    // Variable to store the execute function
+    static Func<int> questionCreateFunction = Addition.generateAdditionQuestion;
+
+    public static void updateQuestionCreateFunction(Func<int> action) {
+        questionCreateFunction = action;
+    }
 
     void Awake() {
         mainGame = this;
@@ -33,6 +41,6 @@ public class MainGame : MonoBehaviour
     // Only works with addition
     // TODO: fix after adding other operations
     void generateNewQuestion() {
-        answer = Addition.generateAdditionQuestion();
+        answer = questionCreateFunction();
     }
 }
