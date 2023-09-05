@@ -33,6 +33,7 @@ public class MainGame : MonoBehaviour
 
     public void checkAnswer(long submission) {
         if (submission == answer) {
+            AnswerText.instance.correctAnswer();
             generateNewQuestion();
         } else {
             GameOver.instance.gameOver(answer);
