@@ -31,8 +31,7 @@ public class AnswerText : MonoBehaviour
         image.color = changedColor;
 
         // lerp animation with given duration in seconds
-        for (float t = 0; t < 1.0f; t += Time.deltaTime / DURATION)
-        {
+        for (float t = 0; t < 1.0f; t += Time.deltaTime / DURATION) {
             image.color = Color.Lerp(changedColor, originColor , t);
 
             yield return null;

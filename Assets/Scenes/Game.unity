@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452df7d3fd8c366359f69d82d62d843e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DURATION: 0.3
+  DURATION: 0.2
   correctColor: {r: 0, g: 0.8156863, b: 0.17254902, a: 1}
 --- !u!1 &1498325810
 GameObject:
