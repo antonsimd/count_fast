@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class AnswerText : MonoBehaviour
 {
-    public float DURATION = 0.3f;
-    public Color correctColor;
+    [SerializeField] float DURATION = 0.3f;
+    [SerializeField] Color correctColor;
+    [SerializeField] Color wrongColor;
+    [SerializeField] Color originColor;
 
     Image image;
     public static AnswerText instance;
@@ -23,10 +25,11 @@ public class AnswerText : MonoBehaviour
         StartCoroutine(DamageEffectSequence(correctColor));
     }
 
-    IEnumerator DamageEffectSequence(Color changedColor) {
-    // save origin color
-        Color originColor = image.color;
+    public void wrongAnswer() {
+        StartCoroutine(DamageEffectSequence(wrongColor));
+    }
 
+    IEnumerator DamageEffectSequence(Color changedColor) {
         // tint the sprite with damage color
         image.color = changedColor;
 
