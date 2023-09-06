@@ -12,10 +12,15 @@ public class KeyboardInput : MonoBehaviour
     public TextMeshProUGUI answerText;
     public GameObject errorText;
     public GameObject enterNumberText;
+    public static KeyboardInput instance;
 
     string answer = "";
     string text = POSITIVE_NUMBER;
     bool answerNegative = false;
+
+    void Awake() {
+        instance = this;
+    }
 
     void Start() {
         clearText();
@@ -53,7 +58,6 @@ public class KeyboardInput : MonoBehaviour
         long answerInt = long.Parse(answer);
 
         answerInt *= answerNegative == true ? -1 : 1;
-        clearText();
         MainGame.mainGame.checkAnswer(answerInt);
     }
 
