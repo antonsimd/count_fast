@@ -14,10 +14,6 @@ public class MainGame : MonoBehaviour
 
     public TextMeshProUGUI questionText;
     public static MainGame mainGame;
-
-    // Min and max range for the numbers
-    public (int, int) range = (1, 100);
-
     int answer;
 
     // Variable to store the execute function
