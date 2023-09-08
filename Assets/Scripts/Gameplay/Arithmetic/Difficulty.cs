@@ -6,10 +6,12 @@ public class Difficulty
 {
     const int DEFAULT_DIFFICULTY = 4;
     static int current_difficulty = DEFAULT_DIFFICULTY;
-    public static (int, int) range = (1, 100);
 
     // PlayerPrefs key for difficulty
     const string difficultyKey = "difficulty";
+
+    // Range of random numbers
+    public static (int, int) range = (1, 100);
 
     public static int initialiseDifficulty() {
         if (!PlayerPrefs.HasKey(difficultyKey)) {

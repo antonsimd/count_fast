@@ -12,7 +12,7 @@ public class DifficultySlider : MonoBehaviour
     const string DIFFICULTY_TEXT = "Difficulty: ";
 
     void Start() {
-        int difficulty = Difficulty.getDifficulty();
+        int difficulty = Difficulty.initialiseDifficulty();
         updateText((float)difficulty);
     }
 
