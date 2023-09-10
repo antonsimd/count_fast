@@ -36,4 +36,12 @@ public class Difficulty
         PlayerPrefs.SetInt(difficultyKey, current_difficulty);
         PlayerPrefs.Save();
     }
+
+    public static void setMinRange(int number) {
+        range.Item1 = number;
+    }
+
+    public static void setMaxRange(int number) {
+        range.Item2 = number;
+    }
 }
