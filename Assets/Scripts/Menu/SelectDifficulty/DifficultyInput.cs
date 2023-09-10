@@ -7,9 +7,13 @@ using TMPro;
 public class DifficultyInput : MonoBehaviour
 {
     public enum GameTypes {
-        AS,
-        MD
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division
     };
+
+    public static GameTypes gameType = GameTypes.Addition;
 
     [SerializeField] GameObject minInput;
     [SerializeField] GameObject maxInput;
@@ -29,11 +33,13 @@ public class DifficultyInput : MonoBehaviour
     TMP_InputField minInputText;
     TMP_InputField maxInputText;
 
-    public static void setGameMode(GameTypes gameType) {
-        if (gameType == GameTypes.AS) {
+    public static void setGameMode(GameTypes updatedGameType) {
+        gameType = updatedGameType;
+
+        if (updatedGameType == GameTypes.Addition || updatedGameType == GameTypes.Subtraction) {
             minNumberKey = MIN_AS_NUMBER;
             maxNumberKey = MAX_AS_NUMBER;
-        } else if (gameType == GameTypes.MD) {
+        } else if (updatedGameType == GameTypes.Multiplication || updatedGameType == GameTypes.Division) {
             minNumberKey = MIN_MD_NUMBER;
             maxNumberKey = MAX_MD_NUMBER;
         }
@@ -70,7 +76,11 @@ public class DifficultyInput : MonoBehaviour
 
     public void setMinDifficulty() {
         int parsedNumber = Int32.Parse(minInputText.text);
-        Difficulty.setMinRange(parsedNumber);
+        if (gameType == GameTypes.Addition || gameType == GameTypes.Subtraction) {
+            Difficulty.setMinRange(parsedNumber);
+        } else {
+            Difficulty.setMinMDRange(parsedNumber);
+        }
 
         // Update PlayerPrefs to save across app closes
         PlayerPrefs.SetInt(minNumberKey, parsedNumber);
@@ -78,8 +88,14 @@ public class DifficultyInput : MonoBehaviour
     }
 
     public void setMaxDifficulty() {
+        Debug.Log(gameType.ToString());
+
         int parsedNumber = Int32.Parse(maxInputText.text);
-        Difficulty.setMaxRange(parsedNumber);
+        if (gameType == GameTypes.Addition || gameType == GameTypes.Subtraction) {
+            Difficulty.setMaxRange(parsedNumber);
+        } else {
+            Difficulty.setMaxMDRange(parsedNumber);
+        }
 
         // Update PlayerPrefs to save across app closes
         PlayerPrefs.SetInt(maxNumberKey, parsedNumber);

@@ -43,7 +43,8 @@ public class Difficulty
     }
 
     public static void setMaxRange(int number) {
-        range.Item2 = number;
+        // Add 1 because C# excludes the number at the top of the range
+        range.Item2 = number + 1;
     }
 
     public static void setMinMDRange(int number) {
@@ -51,6 +52,7 @@ public class Difficulty
     }
 
     public static void setMaxMDRange(int number) {
-        MDRange.Item2 = number;
+        // Add 1 because C# excludes the number at the top of the range
+        MDRange.Item2 = number + 1;
     }
 }
