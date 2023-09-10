@@ -12,6 +12,7 @@ public class Difficulty
 
     // Range of random numbers
     public static (int, int) range = (1, 100);
+    public static (int, int) MDRange = (1, 20);
 
     public static int initialiseDifficulty() {
         if (!PlayerPrefs.HasKey(difficultyKey)) {
@@ -43,5 +44,13 @@ public class Difficulty
 
     public static void setMaxRange(int number) {
         range.Item2 = number;
+    }
+
+    public static void setMinMDRange(int number) {
+        MDRange.Item1 = number;
+    }
+
+    public static void setMaxMDRange(int number) {
+        MDRange.Item2 = number;
     }
 }

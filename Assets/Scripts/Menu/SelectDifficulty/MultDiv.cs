@@ -4,15 +4,15 @@ using UnityEngine;
 using System;
 using TMPro;
 
-public class DifficultyInput : MonoBehaviour
+public class MultDiv : MonoBehaviour
 {
     [SerializeField] GameObject minInput;
     [SerializeField] GameObject maxInput;
 
-    const string minNumberKey = "minNumber";
-    const string maxNumberKey = "maxNumber";
+    const string minNumberKey = "minMDNumber";
+    const string maxNumberKey = "maxMDNumber";
     const int DEFAULT_MIN = 0;
-    const int DEFAULT_MAX = 100;
+    const int DEFAULT_MAX = 20;
 
     // Variables for storing min and max inputs
     TMP_InputField minInputText;
