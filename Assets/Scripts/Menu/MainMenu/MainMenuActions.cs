@@ -7,22 +7,26 @@ public class MainMenuActions : MonoBehaviour
 {
     public static void additionGame() {
         MainGame.updateQuestionCreateFunction(Addition.generateQuestion);
+        DifficultyInput.setGameMode(DifficultyInput.GameTypes.AS);
         SceneManager.LoadScene("SelectDifficulty");
     }
 
     public static void multiplicationGame() {
         MainGame.updateQuestionCreateFunction(Multiplication.generateQuestion);
-        SceneManager.LoadScene("MultDiv");
+        DifficultyInput.setGameMode(DifficultyInput.GameTypes.MD);
+        SceneManager.LoadScene("SelectDifficulty");
     }
 
     public static void subtractionGame() {
         MainGame.updateQuestionCreateFunction(Subtraction.generateQuestion);
+        DifficultyInput.setGameMode(DifficultyInput.GameTypes.AS);
         SceneManager.LoadScene("SelectDifficulty");
     }
 
     public static void divisionGame() {
         MainGame.updateQuestionCreateFunction(Division.generateQuestion);
-        SceneManager.LoadScene("MultDiv");
+        DifficultyInput.setGameMode(DifficultyInput.GameTypes.MD);
+        SceneManager.LoadScene("SelectDifficulty");
     }
 
     public static void randomGame() {

@@ -6,11 +6,22 @@ using TMPro;
 
 public class DifficultyInput : MonoBehaviour
 {
+    public enum GameTypes {
+        AS,
+        MD
+    };
+
     [SerializeField] GameObject minInput;
     [SerializeField] GameObject maxInput;
 
-    const string minNumberKey = "minNumber";
-    const string maxNumberKey = "maxNumber";
+    const string MIN_AS_NUMBER = "minNumber";
+    const string MAX_AS_NUMBER = "maxNumber";
+
+    const string MIN_MD_NUMBER = "minMDNumber";
+    const string MAX_MD_NUMBER = "maxMDNumber";
+
+    static string minNumberKey = MIN_AS_NUMBER;
+    static string maxNumberKey = MAX_AS_NUMBER;
     const int DEFAULT_MIN = 0;
     const int DEFAULT_MAX = 100;
 
@@ -18,6 +29,15 @@ public class DifficultyInput : MonoBehaviour
     TMP_InputField minInputText;
     TMP_InputField maxInputText;
 
+    public static void setGameMode(GameTypes gameType) {
+        if (gameType == GameTypes.AS) {
+            minNumberKey = MIN_AS_NUMBER;
+            maxNumberKey = MAX_AS_NUMBER;
+        } else if (gameType == GameTypes.MD) {
+            minNumberKey = MIN_MD_NUMBER;
+            maxNumberKey = MAX_MD_NUMBER;
+        }
+    }
 
     void Start() {
         minInputText = minInput.GetComponent<TMP_InputField>();
