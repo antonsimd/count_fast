@@ -7,7 +7,7 @@ public class MixedDifficulty : MonoBehaviour
     [SerializeField] GameObject ASPanel;
     [SerializeField] GameObject MDPanel;
 
-    void Start() {
+    void Awake() {
         setASMode();
     }
 
