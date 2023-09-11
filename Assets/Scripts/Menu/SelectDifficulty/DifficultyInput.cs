@@ -88,7 +88,6 @@ public class DifficultyInput : MonoBehaviour
     }
 
     public void setMaxDifficulty() {
-        Debug.Log(gameType.ToString());
 
         int parsedNumber = Int32.Parse(maxInputText.text);
         if (gameType == GameTypes.Addition || gameType == GameTypes.Subtraction) {
