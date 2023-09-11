@@ -22,7 +22,7 @@ public class MainGame : MonoBehaviour
 
     // Variable to store the current game mode
     // Practice by default
-    static GameModes gameMode = GameModes.PRACTICE;
+    public static GameModes gameMode = GameModes.PRACTICE;
 
     bool gameOver = false;
 
