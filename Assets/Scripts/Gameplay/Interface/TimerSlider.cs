@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TimerSlider : MonoBehaviour
 {
-    const float COLOR_LERP_TIME = 0.05f;
+    const float COLOR_LERP_TIME = 0.15f;
     const int COUNTDOWN_TIME_RATIO = 5;
 
     [SerializeField] Slider slider;
