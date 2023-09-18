@@ -22,7 +22,9 @@ public class MainGame : MonoBehaviour
 
     // Variable to store the current game mode
     // Practice by default
-    static GameModes gameMode = GameModes.PRACTICE;
+    public static GameModes gameMode = GameModes.PRACTICE;
+
+    bool gameOver = false;
 
     public static void updateQuestionCreateFunction(Func<int> action) {
         questionCreateFunction = action;
@@ -37,19 +39,42 @@ public class MainGame : MonoBehaviour
     }
 
     void Start() {
+        gameOver = false;
         generateNewQuestion();
+        if (gameMode == GameModes.GAME) {
+            TimerSlider.instance.initialiseTimer();
+        }
+    }
+
+    void Update() {
+
+        // Check for gameOver
+        if (gameMode == GameModes.GAME) {
+            gameOver ^= TimerSlider.instance.gameStatus();
+            if (gameOver) {
+                GameOver.instance.gameOver(answer);
+            }
+        }
     }
 
     public void checkAnswer(long submission) {
         if (submission == answer) {
             AnswerText.instance.correctAnswer();
-            KeyboardInput.instance.clearText();
             generateNewQuestion();
+
+            // Reset timer if the game mode is a game
+            if (gameMode == GameModes.GAME) {
+                TimerSlider.instance.resetTimer();
+            }
+
         } else if (gameMode == GameModes.PRACTICE) {
             AnswerText.instance.wrongAnswer();
         } else {
-            GameOver.instance.gameOver(answer);
+            gameOver = true;
         }
+
+        // Clear the answer field
+        KeyboardInput.instance.clearText();
     }
 
     void generateNewQuestion() {

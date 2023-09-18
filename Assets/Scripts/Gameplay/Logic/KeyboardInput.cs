@@ -44,6 +44,10 @@ public class KeyboardInput : MonoBehaviour
             updateText();
         }
 
+        if (answer.Length == 0 && answerNegative) {
+            toggleSign();
+        }
+
         if (answer.Length < maxLongLength) {
             errorText.SetActive(false);
         }

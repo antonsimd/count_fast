@@ -19,6 +19,9 @@ public class GameOver : MonoBehaviour
     public void gameOver(int answer) {
         gameObject.SetActive(true);
         correctAnswer.text = "= " + answer.ToString();
+
+        // Stop slider timer
+        TimerSlider.instance.stopTimer();
     }
 
     public void mainMenu() {
