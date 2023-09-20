@@ -47,10 +47,11 @@ public class MainGame : MonoBehaviour
     }
 
     void Update() {
-
         // Check for gameOver
         if (gameMode == GameModes.GAME) {
-            gameOver ^= TimerSlider.instance.gameStatus();
+
+            // GameOver is set to either true or false
+            gameOver |= TimerSlider.instance.gameStatus();
             if (gameOver) {
                 GameOver.instance.gameOver(answer);
             }
@@ -65,6 +66,7 @@ public class MainGame : MonoBehaviour
             // Reset timer if the game mode is a game
             if (gameMode == GameModes.GAME) {
                 TimerSlider.instance.resetTimer();
+                Score.instance.addPoint();
             }
 
         } else if (gameMode == GameModes.PRACTICE) {

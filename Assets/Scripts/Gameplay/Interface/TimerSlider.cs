@@ -64,5 +64,6 @@ public class TimerSlider : MonoBehaviour
 
     public void resetTimer() {
         timerValue = countdownTime;
+        sliderColor.color = greenColor;
     }
 }
