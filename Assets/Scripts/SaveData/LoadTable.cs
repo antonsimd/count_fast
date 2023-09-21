@@ -9,13 +9,25 @@ public class LoadTable : MonoBehaviour
     [SerializeField] Transform parent;
 
     void Start() {
-        DataManager.load();
-        DataManager.clearData();
+        // DataManager.clearData();
 
         // initialiseData();
 
         var data = DataManager.getSaveData();
         createScoreboardEntries(data);
+    }
+
+    public void clearScoreboard() {
+        DataManager.clearData();
+        clearRows();
+        var data = DataManager.getSaveData();
+        createScoreboardEntries(data);
+    }
+
+    void clearRows() {
+        foreach(Transform child in parent) {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
     void createScoreboardEntries(SaveData data) {
@@ -25,10 +37,14 @@ public class LoadTable : MonoBehaviour
             TextMeshProUGUI[] texts = newRow.GetComponentsInChildren<TextMeshProUGUI>();
 
             // HARD CODED, FIX IF NEEDED
+            // Game mode 
             texts[0].text = gameData.gameMode + "\n" + "Min: " + gameData.minNumber.ToString() 
             + " Max: " + gameData.maxNumber.ToString();
 
-            texts[1].text = gameData.timePerQuestion.ToString() + "S";
+            // Time per question
+            texts[1].text = gameData.timePerQuestion.ToString() + " S";
+            // Score
+            texts[2].text = gameData.score.ToString();
         }
     }
 

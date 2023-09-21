@@ -38,6 +38,7 @@ public static class DataManager
     }
 
     public static SaveData getSaveData() {
+        load();
         return data;
     }
 

@@ -10,7 +10,8 @@ public class DifficultyInput : MonoBehaviour
         Addition,
         Subtraction,
         Multiplication,
-        Division
+        Division,
+        Mixed
     };
 
     public static GameTypes gameType = GameTypes.Addition;
