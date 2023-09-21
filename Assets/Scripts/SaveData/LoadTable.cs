@@ -12,7 +12,7 @@ public class LoadTable : MonoBehaviour
         DataManager.load();
         DataManager.clearData();
 
-        initialiseData();
+        // initialiseData();
 
         var data = DataManager.getSaveData();
         createScoreboardEntries(data);
@@ -36,8 +36,8 @@ public class LoadTable : MonoBehaviour
         SaveGameInstance temp = new SaveGameInstance();
         temp.gameMode = "Addition";
         temp.minNumber = 5;
-        temp.maxNumber = 10;
-        temp.timePerQuestion = 5;
+        temp.maxNumber = 125;
+        temp.timePerQuestion = 10;
         temp.score = 21;
 
         DataManager.addSavedGame(temp);

@@ -6,7 +6,9 @@ using UnityEngine;
 
 public static class DataManager
 {
-    static int numElements = 0;
+    const string NUM_ELEMENTS_KEY = "numElementsInSaveData";
+
+    static int numElements = getNumElements();
     static SaveData data = new SaveData(numElements);
 
     static string path = Application.persistentDataPath + "/" + "saveData.json";
@@ -16,10 +18,16 @@ public static class DataManager
         JsonUtility.FromJsonOverwrite(json, data);
     }
 
+    // Add an instance of SaveGameInstance to the start of the array
     public static void addSavedGame(SaveGameInstance saveGameInstance) {
 
-        // Add an instance of SaveGameInstance to the start of the array
+        // Get num elements from playerPrefs
+        numElements = getNumElements();
         numElements++;
+
+        // Update numElements in playerPrefs
+        setNumElements(numElements);
+
         SaveData temp = new SaveData(numElements);
         temp.saveData[0] = saveGameInstance;
         data.saveData.CopyTo(temp.saveData, 1);
@@ -35,6 +43,7 @@ public static class DataManager
 
     public static void clearData() {
         data = new SaveData(0);
+        setNumElements(0);
         save();
     }
 
@@ -65,5 +74,22 @@ public static class DataManager
         }
 
         return json;
+    }
+
+    // Get number of elements from PlayerPrefs
+    // If key does not exist set it to 0 and return 0
+    static int getNumElements() {
+        if (!PlayerPrefs.HasKey(NUM_ELEMENTS_KEY)) {
+            setNumElements(0);
+            return 0;
+        } else {
+            return PlayerPrefs.GetInt(NUM_ELEMENTS_KEY);
+        }
+    }
+
+    // Set num elements in PlayerPrefs
+    static void setNumElements(int numElements) {
+        PlayerPrefs.SetInt(NUM_ELEMENTS_KEY, numElements);
+        PlayerPrefs.Save();
     }
 }
