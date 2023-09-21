@@ -40,7 +40,7 @@ public class DifficultyInput : MonoBehaviour
         if (updatedGameType == GameTypes.Addition || updatedGameType == GameTypes.Subtraction) {
             minNumberKey = MIN_AS_NUMBER;
             maxNumberKey = MAX_AS_NUMBER;
-        } else if (updatedGameType == GameTypes.Multiplication || updatedGameType == GameTypes.Division) {
+        } else {
             minNumberKey = MIN_MD_NUMBER;
             maxNumberKey = MAX_MD_NUMBER;
         }

@@ -23,6 +23,9 @@ public class SaveGame : MonoBehaviour
             newSave.maxNumber = Difficulty.MDRange.Item2;
         }
 
+        // Decrease by 1 due to the highest number being excluded in random number generation
+        newSave.maxNumber--;
+
         newSave.timePerQuestion = (int)TimeSelectSlider.timeForEachQuestion;
         newSave.score = Score.instance.getScore();
 
