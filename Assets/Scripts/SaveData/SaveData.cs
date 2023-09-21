@@ -6,7 +6,12 @@ using System;
 [Serializable]
 public class SaveData
 {
-    public SaveGameInstance[] saveData = new SaveGameInstance[100];
+    public SaveGameInstance[] saveData;
+
+    // Allows to dynamically set length of the array
+    public SaveData(int numElements) {
+        saveData = new SaveGameInstance[numElements];
+    }
 }
 
 [Serializable]

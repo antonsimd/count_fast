@@ -1,17 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LoadTable : MonoBehaviour
 {
-    [SerializeField] DataManager dataManager;
+    [SerializeField] GameObject rowPrefab;
+    [SerializeField] Transform parent;
 
     void Start() {
-        dataManager.load();
-        // initialiseData();
+        DataManager.load();
+        DataManager.clearData();
 
-        // dataManager.save();
-        // dataManager.load();
+        initialiseData();
+
+        var data = DataManager.getSaveData();
+        createScoreboardEntries(data);
+    }
+
+    void createScoreboardEntries(SaveData data) {
+        foreach(var gameData in data.saveData) {
+            GameObject newRow = Instantiate(rowPrefab, parent);
+
+            TextMeshProUGUI[] texts = newRow.GetComponentsInChildren<TextMeshProUGUI>();
+
+            // HARD CODED, FIX IF NEEDED
+            texts[0].text = gameData.gameMode + "\n" + "Min: " + gameData.minNumber.ToString() 
+            + " Max: " + gameData.maxNumber.ToString();
+
+            texts[1].text = gameData.timePerQuestion.ToString() + "S";
+        }
     }
 
     void initialiseData() {
@@ -22,6 +40,6 @@ public class LoadTable : MonoBehaviour
         temp.timePerQuestion = 5;
         temp.score = 21;
 
-        dataManager.data.saveData.SetValue(temp, 0);
+        DataManager.addSavedGame(temp);
     }
 }

@@ -1,48 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using System.IO;
 using UnityEngine;
 
-public class DataManager: MonoBehaviour
+public static class DataManager
 {
-    public SaveData data;
+    static int numElements = 0;
+    static SaveData data = new SaveData(numElements);
 
-    string path;
+    static string path = Application.persistentDataPath + "/" + "saveData.json";
 
-    void Awake() {
-        path = Application.persistentDataPath + "/" + "saveData.json";
-        data = new SaveData();
-    }
-
-    public void save() {
-        string json = JsonUtility.ToJson(data);
-        Debug.Log("SAVING");
-        writeToFile(json);
-        // File.WriteAllText(path, json);
-    }
-
-    // public void load()
-    // {
-    //     if (File.Exists(path))
-    //     {
-    //         string loadSaveData = File.ReadAllText(path);
-    //         data = JsonUtility.FromJson<SaveData>(loadSaveData);
-    //         Debug.Log("LOADING");
-    //         Debug.Log(data.saveData.Count);
-    //     }
-    //     else
-    //         Debug.Log("There is no save files to load!");
-    // }
-  
-
-    public void load() {
-        data = new SaveData();
+    public static void load() {
         string json = readFromFile();
         JsonUtility.FromJsonOverwrite(json, data);
-        Debug.Log(data.saveData[0].gameMode);
     }
 
-    void writeToFile(string json) {
+    public static void addSavedGame(SaveGameInstance saveGameInstance) {
+
+        // Add an instance of SaveGameInstance to the start of the array
+        numElements++;
+        SaveData temp = new SaveData(numElements);
+        temp.saveData[0] = saveGameInstance;
+        data.saveData.CopyTo(temp.saveData, 1);
+        data = temp;
+
+        // Save changes to JSON
+        save();
+    }
+
+    public static SaveData getSaveData() {
+        return data;
+    }
+
+    public static void clearData() {
+        data = new SaveData(0);
+        save();
+    }
+
+    // Save to JSON file
+    static void save() {
+        string json = JsonUtility.ToJson(data);
+        writeToFile(json);
+    }
+
+    static void writeToFile(string json) {
 
         FileStream fileStream = new FileStream(path, FileMode.Create);
 
@@ -51,7 +53,7 @@ public class DataManager: MonoBehaviour
         }
     }
 
-    string readFromFile() {
+    static string readFromFile() {
         string json = "";
 
         if (File.Exists(path)) {
