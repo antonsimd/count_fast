@@ -37,6 +37,35 @@ public static class DataManager
         save();
     }
 
+    public static void removeAtIndex(int index) {
+        // Get num elements from playerPrefs
+        numElements = getNumElements();
+        numElements--;
+
+        // Update numElements in playerPrefs
+        setNumElements(numElements);
+
+        SaveData temp = new SaveData(numElements);
+        int len = data.saveData.Length;
+        bool removed = false;
+
+        for (int i = 0; i < len; i++) {
+            if (i == index) {
+                removed = true;
+                continue;
+            }
+
+            if (!removed) {
+                temp.saveData[i] = data.saveData[i];
+            } else {
+                temp.saveData[i - 1] = data.saveData[i];
+            }
+        }
+
+        data = temp;
+        save();
+    }
+
     public static SaveData getSaveData() {
         load();
         return data;

@@ -8,11 +8,18 @@ public class LoadTable : MonoBehaviour
     [SerializeField] GameObject rowPrefab;
     [SerializeField] Transform parent;
 
+    public static LoadTable instance;
+
+    void Awake() {
+        instance = this;
+    }
+
     void Start() {
-        // DataManager.clearData();
+        resetScoreboard();
+    }
 
-        // initialiseData();
-
+    public void resetScoreboard() {
+        clearRows();
         var data = DataManager.getSaveData();
         createScoreboardEntries(data);
     }
@@ -31,8 +38,12 @@ public class LoadTable : MonoBehaviour
     }
 
     void createScoreboardEntries(SaveData data) {
+        int i = 0;
         foreach(var gameData in data.saveData) {
             GameObject newRow = Instantiate(rowPrefab, parent);
+            var script = newRow.GetComponent<TableRow>();
+            script.setIndex(i);
+            i++;
 
             TextMeshProUGUI[] texts = newRow.GetComponentsInChildren<TextMeshProUGUI>();
 
