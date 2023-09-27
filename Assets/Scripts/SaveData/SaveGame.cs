@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class SaveGame : MonoBehaviour
 {
+    [SerializeField] GameObject gameSavedText;
+    bool wasSaved = false;
+
+    void Awake() {
+        gameSavedText.SetActive(false);
+    }
+
     public void saveGame() {
+        if (!wasSaved) {
+            wasSaved = true;
+            addSaveGameInstance();
+            displayGameSavedText();
+        }
+    }
+
+    void displayGameSavedText() {
+        gameSavedText.SetActive(true);
+    }
+
+    void addSaveGameInstance() {
         var newSave = new SaveGameInstance();
         newSave.gameMode = DifficultyInput.gameType.ToString();
 
