@@ -22,6 +22,9 @@ public class GameOver : MonoBehaviour
 
         // Stop slider timer
         TimerSlider.instance.stopTimer();
+
+        // Remove exit game popup if it is on screen
+        ConfirmPopup.destroyPopupIfNeeded();
     }
 
     public void mainMenu() {

@@ -13,8 +13,10 @@ public class ConfirmPopup : MonoBehaviour
 
     // Function to be executed on confirm
     Action proceedFunction;
+    static bool destructionNeeded = false;
 
     public static void createPopup(GameObject prefab, string text, Action func) {
+        destructionNeeded = false;
         // HARD CODED: finds Canvas by name
         GameObject canvas = GameObject.Find("Canvas");
 
@@ -27,6 +29,16 @@ public class ConfirmPopup : MonoBehaviour
         ConfirmPopup newPopup = gameObject.GetComponent<ConfirmPopup>();
         newPopup.proceedFunction = func;
         newPopup.updateText(text);
+    }
+
+    public static void destroyPopupIfNeeded() {
+        destructionNeeded = true;
+    }
+
+    void Update() {
+        if (destructionNeeded) {
+            removePopup();
+        }
     }
 
     void updateText(string text) {
