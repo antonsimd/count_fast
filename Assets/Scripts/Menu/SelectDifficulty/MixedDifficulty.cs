@@ -18,7 +18,7 @@ public class MixedDifficulty : MonoBehaviour
     }
 
     public void setMDMode() {
-        DifficultyInput.setGameMode(DifficultyInput.GameTypes.Multiplication);
+        DifficultyInput.setGameMode(DifficultyInput.GameTypes.Mixed);
         ASPanel.SetActive(false);
         MDPanel.SetActive(true);
     }

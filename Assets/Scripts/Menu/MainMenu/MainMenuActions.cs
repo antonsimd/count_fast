@@ -33,4 +33,8 @@ public class MainMenuActions : MonoBehaviour
         MainGame.updateQuestionCreateFunction(RandomGame.generateQuestion);
         SceneManager.LoadScene("MixedDifficultySelection");
     }
+
+    public static void viewScoreboard() {
+        SceneManager.LoadScene("SavedScores");
+    }
 }
