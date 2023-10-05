@@ -43,6 +43,7 @@ public class MainGame : MonoBehaviour
         generateNewQuestion();
         if (gameMode == GameModes.GAME) {
             TimerSlider.instance.initialiseTimer();
+            Score.instance.initialiseScore();
         }
     }
 

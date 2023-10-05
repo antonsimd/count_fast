@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rowPrefab: {fileID: 5176193514430601452, guid: 1417c8be9eaecabe4a5fcd903f5e8997, type: 3}
   parent: {fileID: 356290799}
+  confirmSelectionPrefab: {fileID: 5802102180876250238, guid: a43183b795ced1bfda463b3119c81700, type: 3}
 --- !u!1 &381584399
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +498,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 356290801}
         m_TargetAssemblyTypeName: LoadTable, Assembly-CSharp
-        m_MethodName: clearScoreboard
+        m_MethodName: confirmClearScoreBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -857,6 +858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 209852890}
     m_Modifications:
+    - target: {fileID: 3182892279502229034, guid: c0ebf2ade23d8b885afd2f352ead7a3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: returnToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 4861107088385028930, guid: c0ebf2ade23d8b885afd2f352ead7a3a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -280,3 +280,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a470f2800bdd952a9a8fd7191c6e795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmPopupPrefab: {fileID: 5802102180876250238, guid: a43183b795ced1bfda463b3119c81700, type: 3}

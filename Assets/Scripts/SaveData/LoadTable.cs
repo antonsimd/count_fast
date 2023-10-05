@@ -5,8 +5,11 @@ using TMPro;
 
 public class LoadTable : MonoBehaviour
 {
+    const string CLEAR_SCOREBOARD_TEXT = "clear the scoreboard";
+
     [SerializeField] GameObject rowPrefab;
     [SerializeField] Transform parent;
+    [SerializeField] GameObject confirmSelectionPrefab;
 
     public static LoadTable instance;
 
@@ -22,6 +25,10 @@ public class LoadTable : MonoBehaviour
         clearRows();
         var data = DataManager.getSaveData();
         createScoreboardEntries(data);
+    }
+
+    public void confirmClearScoreBoard() {
+        ConfirmPopup.createPopup(confirmSelectionPrefab, CLEAR_SCOREBOARD_TEXT, clearScoreboard);
     }
 
     public void clearScoreboard() {

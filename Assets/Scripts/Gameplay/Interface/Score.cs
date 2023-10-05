@@ -14,6 +14,7 @@ public class Score : MonoBehaviour
 
     void Awake() {
         instance = this;
+        gameObject.SetActive(false);
     }
 
     void Start() {
@@ -32,5 +33,9 @@ public class Score : MonoBehaviour
 
     public int getScore() {
         return currentScore;
+    }
+
+    public void initialiseScore() {
+        gameObject.SetActive(true);
     }
 }
