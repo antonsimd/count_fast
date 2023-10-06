@@ -55,14 +55,16 @@ public class LoadTable : MonoBehaviour
             TextMeshProUGUI[] texts = newRow.GetComponentsInChildren<TextMeshProUGUI>();
 
             // HARD CODED, FIX IF NEEDED
+            // Date
+            texts[0].text = gameData.date;
             // Game mode 
-            texts[0].text = gameData.gameMode + "\n" + "Min: " + gameData.minNumber.ToString() 
-            + " Max: " + gameData.maxNumber.ToString();
+            texts[1].text = gameData.gameMode + "\n" + "Range: " + gameData.minNumber.ToString() 
+            + " - " + gameData.maxNumber.ToString();
 
             // Time per question
-            texts[1].text = gameData.timePerQuestion.ToString() + " S";
+            texts[2].text = gameData.timePerQuestion.ToString() + " S";
             // Score
-            texts[2].text = gameData.score.ToString();
+            texts[3].text = gameData.score.ToString();
         }
     }
 

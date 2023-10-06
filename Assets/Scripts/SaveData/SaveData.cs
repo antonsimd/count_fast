@@ -17,6 +17,7 @@ public class SaveData
 [Serializable]
 public class SaveGameInstance
 {
+    public string date;
     public string gameMode;
     public int minNumber;
     public int maxNumber;
