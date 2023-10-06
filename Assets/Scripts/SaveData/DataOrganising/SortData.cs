@@ -6,10 +6,34 @@ using System;
 public class SortData : MonoBehaviour
 {
     public void sortAcsendingByScore() {
+        sortArray(new SortScoreAscending());
+    }
+
+    public void sortDescendingByScore() {
+        sortArray(new SortScoreDescending());
+    }
+
+    public void sortDescendingByDate() {
+        sortArray(new SortDateDescending());
+    }
+
+    public void sortAscendingByDate() {
+        sortArray(new SortDateAscending());
+    }
+
+    public void sortDescendingByTime() {
+        sortArray(new SortTimeDescending());
+    }
+
+    public void sortAscendingByTime() {
+        sortArray(new SortTimeAscending());
+    }
+
+    void sortArray(IComparer comparer) {
         SaveData data = DataManager.getSaveData();
 
-        // Sort array by ascending score, save the result to JSON
-        Array.Sort(data.saveData, new SortScoreAscending());
+        // Sort array by the given comparer, save the result to JSON
+        Array.Sort(data.saveData, comparer);
         DataManager.save();
         
         LoadTable.instance.resetScoreboard();
