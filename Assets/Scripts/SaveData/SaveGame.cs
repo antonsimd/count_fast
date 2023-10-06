@@ -25,6 +25,12 @@ public class SaveGame : MonoBehaviour
 
     void addSaveGameInstance() {
         var newSave = new SaveGameInstance();
+
+        // Set current date and time
+        string currentDate = System.DateTime.Now.ToString("dd/MM\nyyyy");
+        newSave.date = currentDate;
+
+        // Set gameMode
         newSave.gameMode = DifficultyInput.gameType.ToString();
 
         // Set min and max values        
