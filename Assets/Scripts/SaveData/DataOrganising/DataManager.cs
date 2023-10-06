@@ -78,7 +78,7 @@ public static class DataManager
     }
 
     // Save to JSON file
-    static void save() {
+    public static void save() {
         string json = JsonUtility.ToJson(data);
         writeToFile(json);
     }
