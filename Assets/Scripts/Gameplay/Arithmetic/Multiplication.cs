@@ -12,7 +12,7 @@ public class Multiplication : MonoBehaviour
         int number1 = random.Next(Difficulty.MDRange.Item1, Difficulty.MDRange.Item2);
         int number2 = random.Next(Difficulty.MDRange.Item1, Difficulty.MDRange.Item2);
 
-        MainGame.mainGame.questionText.text = number1.ToString() + "× " + number2.ToString();
+        MainGame.mainGame.questionText.text = number1.ToString() + " × " + number2.ToString();
 
         return number1 * number2;
     }
