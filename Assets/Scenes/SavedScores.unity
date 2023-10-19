@@ -788,7 +788,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 660078900}
         m_TargetAssemblyTypeName: LoadTable, Assembly-CSharp
-        m_MethodName: clearScoreboard
+        m_MethodName: confirmClearScoreBoard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
