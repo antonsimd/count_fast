@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class DataVariables
 {
+    public const string sortTypeKey = "sortType";
+
     public enum SortTypes {
         ScoreUp,
         ScoreDown,

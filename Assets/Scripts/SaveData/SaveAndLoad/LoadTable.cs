@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
+
+using SortType = DataVariables.SortTypes;
 
 public class LoadTable : MonoBehaviour
 {
@@ -18,7 +21,7 @@ public class LoadTable : MonoBehaviour
     }
 
     void Start() {
-        resetScoreboard();
+        initialiseData();
     }
 
     public void resetScoreboard() {
@@ -47,6 +50,11 @@ public class LoadTable : MonoBehaviour
     void createScoreboardEntries(SaveData data) {
         int i = 0;
         foreach(var gameData in data.saveData) {
+            if (gameData.gameMode == "") {
+                DataManager.removeAtIndex(i);
+                continue;
+            }
+
             GameObject newRow = Instantiate(rowPrefab, parent);
             var script = newRow.GetComponent<TableRow>();
             script.setIndex(i);
@@ -69,13 +77,48 @@ public class LoadTable : MonoBehaviour
     }
 
     void initialiseData() {
-        SaveGameInstance temp = new SaveGameInstance();
-        temp.gameMode = "Addition";
-        temp.minNumber = 5;
-        temp.maxNumber = 125;
-        temp.timePerQuestion = 10;
-        temp.score = 21;
+        if (!PlayerPrefs.HasKey(DataVariables.sortTypeKey)) {
+            resetScoreboard();
+            return;
+        }
 
-        DataManager.addSavedGame(temp);
+        string typeString = PlayerPrefs.GetString(DataVariables.sortTypeKey);
+        SortType type = Enum.Parse<SortType>(typeString);
+
+        var sortData = SortData.instance;
+
+        switch (type) {
+            case SortType.ScoreUp:
+                sortData.sortAcsendingByScore();
+                break;
+
+            case SortType.ScoreDown:
+                sortData.sortDescendingByScore();
+                break;
+
+            case SortType.DateUp:
+                sortData.sortAscendingByDate();
+                break;
+                
+            case SortType.DateDown:
+                sortData.sortDescendingByDate();
+                break;
+
+            case SortType.TimeUp:
+                sortData.sortAscendingByTime();
+                break;
+
+            case SortType.TimeDown:
+                sortData.sortDescendingByTime();
+                break;
+
+            case SortType.NameUp:
+                sortData.sortAcsendingByName();
+                break;
+
+            case SortType.NameDown:
+                sortData.sortDecsendingByName();
+                break;
+        }
     }
 }
