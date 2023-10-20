@@ -105,11 +105,11 @@ public class SortDateAscending : IComparer
 public class SortNameDescending : IComparer
 {
     enum GameTypes {
-        Addition = 0,
-        Subtraction = 1,
-        Multiplication = 2,
-        Division = 3,
-        Mixed = 4
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division,
+        Mixed
     };
 
     int IComparer.Compare(object a, object b) {
@@ -132,11 +132,11 @@ public class SortNameDescending : IComparer
 public class SortNameAscending : IComparer
 {
     enum GameTypes {
-        Addition = 0,
-        Subtraction = 1,
-        Multiplication = 2,
-        Division = 3,
-        Mixed = 4
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division,
+        Mixed
     };
 
     int IComparer.Compare(object a, object b) {

@@ -70,7 +70,7 @@ public class LoadTable : MonoBehaviour
             + " - " + gameData.maxNumber.ToString();
 
             // Time per question
-            texts[2].text = gameData.timePerQuestion.ToString() + " S";
+            texts[2].text = gameData.timePerQuestion.ToString() + "S";
             // Score
             texts[3].text = gameData.score.ToString();
         }
@@ -86,6 +86,7 @@ public class LoadTable : MonoBehaviour
         SortType type = Enum.Parse<SortType>(typeString);
 
         var sortData = SortData.instance;
+        var buttonManager = ButtonManager.instance;
 
         switch (type) {
             case SortType.ScoreUp:
@@ -94,6 +95,7 @@ public class LoadTable : MonoBehaviour
 
             case SortType.ScoreDown:
                 sortData.sortDescendingByScore();
+                buttonManager.score();
                 break;
 
             case SortType.DateUp:
@@ -102,6 +104,7 @@ public class LoadTable : MonoBehaviour
                 
             case SortType.DateDown:
                 sortData.sortDescendingByDate();
+                buttonManager.date();
                 break;
 
             case SortType.TimeUp:
@@ -110,6 +113,7 @@ public class LoadTable : MonoBehaviour
 
             case SortType.TimeDown:
                 sortData.sortDescendingByTime();
+                buttonManager.time();
                 break;
 
             case SortType.NameUp:
@@ -118,6 +122,7 @@ public class LoadTable : MonoBehaviour
 
             case SortType.NameDown:
                 sortData.sortDecsendingByName();
+                buttonManager.name();
                 break;
         }
     }

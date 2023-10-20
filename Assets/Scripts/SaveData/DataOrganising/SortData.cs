@@ -52,7 +52,7 @@ public class SortData : MonoBehaviour
     }
 
     public void sortAcsendingByName() {
-        string text = "Game type ↑";
+        string text = "Game Type ↑";
         sortArray(new SortNameAscending(), SortType.NameUp, text);
     }
 
@@ -62,6 +62,9 @@ public class SortData : MonoBehaviour
         sortText.text = text;
 
         SaveData data = DataManager.getSaveData();
+        if (data.saveData.Length == 0) {
+            return;
+        }
 
         // Sort array by the given comparer, save the result to JSON
         Array.Sort(data.saveData, comparer);
