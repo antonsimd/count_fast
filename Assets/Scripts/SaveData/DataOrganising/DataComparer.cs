@@ -99,3 +99,61 @@ public class SortDateAscending : IComparer
     }
 }
 #endregion
+
+// Sorting by gameMode
+#region 
+public class SortNameDescending : IComparer
+{
+    enum GameTypes {
+        Addition = 0,
+        Subtraction = 1,
+        Multiplication = 2,
+        Division = 3,
+        Mixed = 4
+    };
+
+    int IComparer.Compare(object a, object b) {
+        SaveGameInstance s1 = (SaveGameInstance)a;
+        SaveGameInstance s2 = (SaveGameInstance)b;
+        
+        var g1 = Enum.Parse<GameTypes>(s1.gameMode);
+        var g2 = Enum.Parse<GameTypes>(s2.gameMode);
+
+        if (g1 < g2) {
+            return 1;
+        } else if (g1 > g2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+public class SortNameAscending : IComparer
+{
+    enum GameTypes {
+        Addition = 0,
+        Subtraction = 1,
+        Multiplication = 2,
+        Division = 3,
+        Mixed = 4
+    };
+
+    int IComparer.Compare(object a, object b) {
+        SaveGameInstance s1 = (SaveGameInstance)a;
+        SaveGameInstance s2 = (SaveGameInstance)b;
+        
+        var g1 = Enum.Parse<GameTypes>(s1.gameMode);
+        var g2 = Enum.Parse<GameTypes>(s2.gameMode);
+
+        if (g1 > g2) {
+            return 1;
+        } else if (g1 < g2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+#endregion

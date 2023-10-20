@@ -29,6 +29,14 @@ public class SortData : MonoBehaviour
         sortArray(new SortTimeAscending());
     }
 
+    public void sortDecsendingByName() {
+        sortArray(new SortNameDescending());
+    }
+
+    public void sortAcsendingByName() {
+        sortArray(new SortNameAscending());
+    }
+
     void sortArray(IComparer comparer) {
         SaveData data = DataManager.getSaveData();
 
