@@ -48,6 +48,10 @@ public class SaveGame : MonoBehaviour
             newSave.maxNumber = Difficulty.MDRange.Item2;
         }
 
+        if (Arithmetic.negativesIncluded()) {
+            newSave.minNumber *= -1;
+        }
+
         // Decrease by 1 due to the highest number being excluded in random number generation
         newSave.maxNumber--;
 

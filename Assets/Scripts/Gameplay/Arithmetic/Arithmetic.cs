@@ -11,6 +11,10 @@ public class Arithmetic
         includeNegatives = x;
     }
 
+    public static bool negativesIncluded() {
+        return includeNegatives;
+    }
+
     public static int getRandomNumber() {
         var bottom = Difficulty.range.Item1;
         var top = Difficulty.range.Item2;

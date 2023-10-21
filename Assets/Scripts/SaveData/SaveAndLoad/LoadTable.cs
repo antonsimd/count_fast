@@ -22,6 +22,7 @@ public class LoadTable : MonoBehaviour
 
     void Start() {
         initialiseData();
+        resetScoreboard();
     }
 
     public void resetScoreboard() {
