@@ -23,17 +23,12 @@ public class IncludeNegatives : MonoBehaviour
         includeNegatives = !includeNegatives;
 
         image.sprite = includeNegatives ? ticked : notTicked;
-        Subtraction.setNegatives(includeNegatives);
+        Arithmetic.setNegatives(includeNegatives);
         PlayerPrefs.SetInt(includeNegativesKey, includeNegatives ? 1 : 0);
         PlayerPrefs.Save();
     }
 
     void initialiseButton() {
-        if (DifficultyInput.gameType != DifficultyInput.GameTypes.Subtraction) {
-            gameObject.SetActive(false);
-            return;
-        }
-
         if (PlayerPrefs.HasKey(includeNegativesKey)) {
             includeNegatives = PlayerPrefs.GetInt(includeNegativesKey) == 1 ? true : false;
 
@@ -49,6 +44,6 @@ public class IncludeNegatives : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        Subtraction.setNegatives(includeNegatives);
+        Arithmetic.setNegatives(includeNegatives);
     }
 }
