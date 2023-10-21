@@ -13,7 +13,7 @@ public class Division : MonoBehaviour
         int number2 = random.Next(Difficulty.MDRange.Item1, Difficulty.MDRange.Item2);
 
         // Do the reverse of multiplication
-        MainGame.mainGame.questionText.text = (number1 * number2).ToString() + "÷ " + number2.ToString();
+        MainGame.mainGame.questionText.text = (number1 * number2).ToString() + " ÷ " + number2.ToString();
 
         return number1;
     }
