@@ -20,8 +20,7 @@ public class Division : Arithmetic
         int number1 = getRandomNumber();
         int number2 = getRandomNumber();
 
-        while (number1 == 0 || number2 == 0) {
-            number1 = getRandomNumber();
+        while (number2 == 0) {
             number2 = getRandomNumber();
         }
 
