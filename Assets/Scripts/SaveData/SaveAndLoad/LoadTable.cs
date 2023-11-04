@@ -21,6 +21,7 @@ public class LoadTable : MonoBehaviour
     }
 
     void Start() {
+        resetScoreboard();
         initialiseData();
     }
 
@@ -122,7 +123,7 @@ public class LoadTable : MonoBehaviour
 
             case SortType.NameDown:
                 sortData.sortDecsendingByName();
-                buttonManager.name();
+                buttonManager.nameButtons();
                 break;
         }
     }

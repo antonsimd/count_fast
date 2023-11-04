@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd72c57cbdfc02779ec595064ed46c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notTicked: {fileID: 21300000, guid: f73f68fe6815f5548a6c2a61b9e49add, type: 3}
-  ticked: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
+  notTicked: {fileID: 21300000, guid: 754067d2e8b084fef8f9b7ab2ef6cbb7, type: 3}
+  ticked: {fileID: 21300000, guid: 483780df3bba223c1be3ec09fc847f68, type: 3}
   button: {fileID: 346773793}
 --- !u!1 &160185500
 GameObject:
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 177.15
+  m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1290, y: 2796}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lowest number must be less than highest number
+  m_text: Highest number must be greater than lowest number
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10c0988d0d1ed9a32b40e3a8c9bba485, type: 2}
   m_sharedMaterial: {fileID: -8789852578180367954, guid: 10c0988d0d1ed9a32b40e3a8c9bba485, type: 2}
@@ -2678,7 +2678,7 @@ MonoBehaviour:
     m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: b61e5c1dced65824cb70cb4c29ed00e4, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 9c76b520b6a8d354d96d585c03e6257b, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c5ecf8faf59c777d95351f2ec7880ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9d1907aa524e0004db48f1c78d5cb8c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

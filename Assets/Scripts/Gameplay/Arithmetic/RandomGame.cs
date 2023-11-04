@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class RandomGame : MonoBehaviour
+public class RandomGame : Arithmetic
 {
     const int questionsLength = 4;
 
@@ -14,8 +14,6 @@ public class RandomGame : MonoBehaviour
         Multiplication.generateQuestion,
         Division.generateQuestion
     };
-
-    static System.Random random = new System.Random();
 
     public static int generateQuestion() {
         int index = random.Next(0, questionsLength);

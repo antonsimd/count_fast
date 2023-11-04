@@ -8,7 +8,7 @@ public static class DataManager
 {
     const string NUM_ELEMENTS_KEY = "numElementsInSaveData";
 
-    static int numElements = getNumElements();
+    static int numElements = 0;
     static SaveData data = new SaveData(numElements);
 
     static string path = Application.persistentDataPath + "/" + "saveData.json";
@@ -77,6 +77,9 @@ public static class DataManager
         save();
     }
 
+    public static int getLength() {
+        return numElements;
+    }
     // Save to JSON file
     public static void save() {
         string json = JsonUtility.ToJson(data);

@@ -25,7 +25,7 @@ public class PlayButton : MonoBehaviour
     }
 
     void Update() {
-        if (Int32.Parse(minInputText.text) > Int32.Parse(maxInputText.text)) {
+        if (Int32.Parse(minInputText.text) >= Int32.Parse(maxInputText.text)) {
             errorText.SetActive(true);
             button.interactable = false;
         } else {

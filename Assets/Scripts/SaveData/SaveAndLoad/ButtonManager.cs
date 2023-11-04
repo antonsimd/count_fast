@@ -30,7 +30,7 @@ public class ButtonManager : MonoBehaviour
         flipObjects(TimeDown, TimeUp);
     }
 
-    public void name() {
+    public void nameButtons() {
         flipObjects(NameDown, NameUp);
     }
 

@@ -2,15 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Division : MonoBehaviour
+public class Division : Arithmetic
 {
     const int multiplicationRangeFactor = 5;
 
-    static System.Random random = new System.Random();
+    static int getRandomNumber() {
+        int bottom = Difficulty.MDRange.Item1;
+        int top = Difficulty.MDRange.Item2;
+
+        if (includeNegatives) {
+            bottom *= -1;
+        }
+        return random.Next(bottom, top);
+    }
 
     public static int generateQuestion() {
-        int number1 = random.Next(Difficulty.MDRange.Item1, Difficulty.MDRange.Item2);
-        int number2 = random.Next(Difficulty.MDRange.Item1, Difficulty.MDRange.Item2);
+        int number1 = getRandomNumber();
+        int number2 = getRandomNumber();
+
+        while (number2 == 0) {
+            number2 = getRandomNumber();
+        }
 
         // Do the reverse of multiplication
         MainGame.mainGame.questionText.text = (number1 * number2).ToString() + " ÷ " + number2.ToString();
