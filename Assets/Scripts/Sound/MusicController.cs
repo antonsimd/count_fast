@@ -34,7 +34,7 @@ public class MusicController : MonoBehaviour
         if (PlayerPrefs.HasKey(musicPlayingKey)) {
             playing = PlayerPrefs.GetInt(musicPlayingKey) == 1 ? true : false;
         } else {
-            playing = false;
+            playing = true;
             PlayerPrefs.SetInt(musicPlayingKey, 1);
             PlayerPrefs.Save();
         }
