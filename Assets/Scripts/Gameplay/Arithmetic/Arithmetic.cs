@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Arithmetic
 {
+    const int negativePercentage = 25;
+
     public static System.Random random = new System.Random();
     public static bool includeNegatives = false;
 
@@ -19,9 +21,13 @@ public class Arithmetic
         var bottom = Difficulty.range.Item1;
         var top = Difficulty.range.Item2;
 
-        if (includeNegatives) {
-            bottom *= -1;
+        int result = random.Next(bottom, top);
+        int negative = random.Next(1, 101);
+
+        if (includeNegatives && negative < negativePercentage) {
+            result *= -1;
         }
-        return random.Next(bottom, top);
+
+        return result;
     }
 }
