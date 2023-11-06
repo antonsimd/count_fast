@@ -39,6 +39,10 @@ public class MainMenuActions : MonoBehaviour
         loadTransition("SavedScores");
     }
 
+    public void howToPlay() {
+        loadTransition("HowToPlay");
+    }
+
     void loadTransition(string sceneName = "SelectDifficulty") {
         StartCoroutine(SceneLoaderCoroutine.loadTransition(sceneName, transition));
     }

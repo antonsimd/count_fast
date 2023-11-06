@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 593844ce4d63cef53bc4d2738f0d05fa
   - enabled: 1
-    path: Assets/Scenes/SavedScores.unity
-    guid: a3d0eeabbde31d354ac96622289f6bcf
+    path: Assets/Scenes/HowToPlay.unity
+    guid: e3f45122081ac9b89a8f7e50653148c7
   - enabled: 1
     path: Assets/Scenes/SelectDifficulty.unity
     guid: 70eb715be0d4ffde884d1bcc1c1e94ed
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/SavedScores.unity
+    guid: a3d0eeabbde31d354ac96622289f6bcf
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: cecbf460e6dfc4bd09e2f953da9e5019, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a59a17535e5cf3123b788fb47bc55981, type: 2}
