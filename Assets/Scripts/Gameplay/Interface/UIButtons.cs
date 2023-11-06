@@ -5,14 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class UIButtons : MonoBehaviour
 {
-    [SerializeField] GameObject confirmPopupPrefab;
+    public static float waitTime = 0.167f;
 
-    public static void returnToMainMenu() {
-        SceneManager.LoadScene("MainMenu");
+    [SerializeField] GameObject confirmPopupPrefab;
+    [SerializeField] Animator transition;
+
+    public void returnToMainMenu() {
+        loadTransition("MainMenu");
     }
 
     public void confirmReturnToMainMenu() {
         string returnToMainMenuText = "return to main menu";
         ConfirmPopup.createPopup(confirmPopupPrefab, returnToMainMenuText, returnToMainMenu);
+    }
+
+    void loadTransition(string sceneName) {
+        StartCoroutine(SceneLoaderCoroutine.loadTransition(sceneName, transition));
     }
 }

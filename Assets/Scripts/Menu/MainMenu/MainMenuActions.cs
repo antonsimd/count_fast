@@ -1,40 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuActions : MonoBehaviour
 {
-    public static void additionGame() {
+    [SerializeField] Animator transition;
+
+    public void additionGame() {
         MainGame.updateQuestionCreateFunction(Addition.generateQuestion);
         DifficultyInput.setGameMode(DifficultyInput.GameTypes.Addition);
-        SceneManager.LoadScene("SelectDifficulty");
+        loadTransition();
     }
 
-    public static void multiplicationGame() {
+    public void multiplicationGame() {
         MainGame.updateQuestionCreateFunction(Multiplication.generateQuestion);
         DifficultyInput.setGameMode(DifficultyInput.GameTypes.Multiplication);
-        SceneManager.LoadScene("SelectDifficulty");
+        loadTransition();
     }
 
-    public static void subtractionGame() {
+    public void subtractionGame() {
         MainGame.updateQuestionCreateFunction(Subtraction.generateQuestion);
         DifficultyInput.setGameMode(DifficultyInput.GameTypes.Subtraction);
-        SceneManager.LoadScene("SelectDifficulty");
+        loadTransition();
     }
 
-    public static void divisionGame() {
+    public void divisionGame() {
         MainGame.updateQuestionCreateFunction(Division.generateQuestion);
         DifficultyInput.setGameMode(DifficultyInput.GameTypes.Division);
-        SceneManager.LoadScene("SelectDifficulty");
+        loadTransition();
     }
 
-    public static void randomGame() {
+    public void randomGame() {
         MainGame.updateQuestionCreateFunction(RandomGame.generateQuestion);
-        SceneManager.LoadScene("MixedDifficultySelection");
+        loadTransition("MixedDifficultySelection");
     }
 
-    public static void viewScoreboard() {
-        SceneManager.LoadScene("SavedScores");
+    public void viewScoreboard() {
+        loadTransition("SavedScores");
+    }
+
+    void loadTransition(string sceneName = "SelectDifficulty") {
+        StartCoroutine(SceneLoaderCoroutine.loadTransition(sceneName, transition));
     }
 }
