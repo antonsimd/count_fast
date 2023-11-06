@@ -10,10 +10,16 @@ public class ConfirmPopup : MonoBehaviour
     const string questionMark = "?";
 
     [SerializeField] TextMeshProUGUI questionText;
+    CanvasGroup canvasGroup;
 
     // Function to be executed on confirm
     Action proceedFunction;
     static bool destructionNeeded = false;
+
+    void Start() {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 1;
+    }
 
     public static void createPopup(GameObject prefab, string text, Action func) {
         destructionNeeded = false;
@@ -46,11 +52,18 @@ public class ConfirmPopup : MonoBehaviour
     }
 
     public void confirmSelection() {
-        proceedFunction();
+        canvasGroup.alpha = 0;
         removePopup();
+        proceedFunction();
     }
 
     public void removePopup() {
+        StartCoroutine(removePopupDelay());
+    }
+
+    IEnumerator removePopupDelay() {
+        yield return new WaitForSeconds(UIButtons.waitTime);
+
         GameObject.Destroy(gameObject);
     }
 }
