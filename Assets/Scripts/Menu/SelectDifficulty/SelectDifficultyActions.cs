@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SelectDifficultyActions : MonoBehaviour
 {
-    public static void loadGame() {
-        SceneManager.LoadScene("Game");
+    [SerializeField] Animator transition;
+
+    public void loadGame() {
+        StartCoroutine(SceneLoaderCoroutine.loadTransition("Game", transition));
     }
 }
