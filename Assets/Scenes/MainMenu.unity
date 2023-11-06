@@ -1076,7 +1076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b736c4e439da5503a560c7d8059c05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0.15
   transition: {fileID: 759850911}
 --- !u!1 &561516819
 GameObject:
@@ -3711,7 +3710,7 @@ GameObject:
   - component: {fileID: 2120374330}
   - component: {fileID: 2120374329}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: ButtonClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
