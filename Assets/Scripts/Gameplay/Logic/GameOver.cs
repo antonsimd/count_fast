@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameOver : MonoBehaviour
 {
     public static GameOver instance;
     public TextMeshProUGUI correctAnswer;
+    [SerializeField] Animator transition;
     void Awake() {
         instance = this;
     }
@@ -28,10 +28,14 @@ public class GameOver : MonoBehaviour
     }
 
     public void mainMenu() {
-        SceneManager.LoadScene("MainMenu");
+        loadScene("MainMenu");
     }
 
     public void restartGame() {
-        SceneManager.LoadScene("Game");
+        loadScene("Game");
+    }
+
+    void loadScene(string sceneName) {
+        StartCoroutine(SceneLoaderCoroutine.loadTransition(sceneName, transition));
     }
 }

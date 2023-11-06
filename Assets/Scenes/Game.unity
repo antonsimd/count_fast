@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctAnswer: {fileID: 769672317}
+  transition: {fileID: 208127340}
 --- !u!1 &202761723
 GameObject:
   m_ObjectHideFlags: 0

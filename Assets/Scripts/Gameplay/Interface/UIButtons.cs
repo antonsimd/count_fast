@@ -12,7 +12,6 @@ public class UIButtons : MonoBehaviour
 
     public void returnToMainMenu() {
         loadTransition("MainMenu");
-        // SceneManager.LoadScene("MainMenu");
     }
 
     public void confirmReturnToMainMenu() {
