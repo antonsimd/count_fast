@@ -12,7 +12,7 @@ public class MusicController : MonoBehaviour
     [SerializeField] Sprite active;
     [SerializeField] GameObject musicPlayerPrefab;
     
-    MusicPlayer musicPlayer;
+    AudioSource musicPlayer;
     bool playing;
     Image image;
 
@@ -39,19 +39,17 @@ public class MusicController : MonoBehaviour
             PlayerPrefs.Save();
         }
 
+        createObject();
         updateButtonAndObject();
-
     }
 
     void updateButtonAndObject() {
         if (playing) {
             image.sprite = active;
-            createObject();
+            musicPlayer.mute = false;
         } else {
             image.sprite = inactive;
-            if (musicPlayer != null) {
-                Destroy(musicPlayer.gameObject);
-            }
+            musicPlayer.mute = true;
         }
     }
 
@@ -59,6 +57,6 @@ public class MusicController : MonoBehaviour
         var musicPlayerObject = GameObject.Find(musicPlayerName);
         musicPlayerObject = musicPlayerObject == null ? Instantiate(musicPlayerPrefab) : musicPlayerObject;
         musicPlayerObject.name = musicPlayerName;
-        musicPlayer = musicPlayerObject.GetComponent<MusicPlayer>();
+        musicPlayer = musicPlayerObject.GetComponent<AudioSource>();
     }
 }
