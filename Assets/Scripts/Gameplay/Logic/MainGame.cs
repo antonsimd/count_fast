@@ -13,6 +13,8 @@ public class MainGame : MonoBehaviour
     };
 
     public TextMeshProUGUI questionText;
+    [SerializeField] AudioSource correctSound;
+    [SerializeField] AudioSource wrongSound;
     public static MainGame mainGame;
     int answer;
 
@@ -62,6 +64,7 @@ public class MainGame : MonoBehaviour
     public void checkAnswer(long submission) {
         if (submission == answer) {
             AnswerText.instance.correctAnswer();
+            correctSound.Play();
             generateNewQuestion();
 
             // Reset timer if the game mode is a game
@@ -72,8 +75,10 @@ public class MainGame : MonoBehaviour
 
         } else if (gameMode == GameModes.PRACTICE) {
             AnswerText.instance.wrongAnswer();
+            wrongSound.Play();
         } else {
             gameOver = true;
+            wrongSound.Play();
         }
 
         // Clear the answer field

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainMenuActions : MonoBehaviour
 {
+    const string developerWebsite = "google.com";
     [SerializeField] Animator transition;
 
     public void additionGame() {
@@ -41,6 +42,10 @@ public class MainMenuActions : MonoBehaviour
 
     public void howToPlay() {
         loadTransition("HowToPlay");
+    }
+
+    public void loadWebsite() {
+        Application.OpenURL(developerWebsite);
     }
 
     void loadTransition(string sceneName = "SelectDifficulty") {

@@ -9,9 +9,10 @@ public class KeyboardInput : MonoBehaviour
     const string POSITIVE_NUMBER = "= ";
     const string NEGATIVE_NUMBER = "= - ";
 
-    public TextMeshProUGUI answerText;
-    public GameObject errorText;
-    public GameObject enterNumberText;
+    [SerializeField] TextMeshProUGUI answerText;
+    [SerializeField] GameObject errorText;
+    [SerializeField] GameObject enterNumberText;
+    [SerializeField] AudioSource errorInputSound;
     public static KeyboardInput instance;
 
     string answer = "";
@@ -31,6 +32,7 @@ public class KeyboardInput : MonoBehaviour
 
         if (answer.Length >= maxLongLength) {
             errorText.SetActive(true);
+            errorInputSound.Play();
         } else {
             answer += number.ToString();
         }
@@ -56,6 +58,7 @@ public class KeyboardInput : MonoBehaviour
     public void submitAnswer() {
         if (answer == "") {
             enterNumberText.SetActive(true);
+            errorInputSound.Play();
             return;
         }
 
