@@ -41,7 +41,7 @@ public class MainGame : MonoBehaviour
     }
 
     void Start() {
-        gameOver = false;
+        resetGameOver();
         generateNewQuestion();
         if (gameMode == GameModes.GAME) {
             TimerSlider.instance.initialiseTimer();
@@ -61,6 +61,10 @@ public class MainGame : MonoBehaviour
                 GameOver.instance.gameOver(answer);
             }
         }
+    }
+
+    public void resetGameOver() {
+        gameOver = false;
     }
 
     public void checkAnswer(long submission) {
