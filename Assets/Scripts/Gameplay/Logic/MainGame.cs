@@ -46,6 +46,8 @@ public class MainGame : MonoBehaviour
         if (gameMode == GameModes.GAME) {
             TimerSlider.instance.initialiseTimer();
             Score.instance.initialiseScore();
+        } else {
+            SkipButton.instance.initialiseButton();
         }
     }
 
@@ -80,12 +82,11 @@ public class MainGame : MonoBehaviour
             gameOver = true;
             wrongSound.Play();
         }
-
-        // Clear the answer field
-        KeyboardInput.instance.clearText();
     }
 
-    void generateNewQuestion() {
+    public void generateNewQuestion() {
         answer = questionCreateFunction();
+        // Clear the answer field
+        KeyboardInput.instance.clearText();
     }
 }
