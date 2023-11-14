@@ -41,11 +41,13 @@ public class MainGame : MonoBehaviour
     }
 
     void Start() {
-        gameOver = false;
+        resetGameOver();
         generateNewQuestion();
         if (gameMode == GameModes.GAME) {
             TimerSlider.instance.initialiseTimer();
             Score.instance.initialiseScore();
+        } else {
+            SkipButton.instance.initialiseButton();
         }
     }
 
@@ -59,6 +61,10 @@ public class MainGame : MonoBehaviour
                 GameOver.instance.gameOver(answer);
             }
         }
+    }
+
+    public void resetGameOver() {
+        gameOver = false;
     }
 
     public void checkAnswer(long submission) {
@@ -80,12 +86,11 @@ public class MainGame : MonoBehaviour
             gameOver = true;
             wrongSound.Play();
         }
-
-        // Clear the answer field
-        KeyboardInput.instance.clearText();
     }
 
-    void generateNewQuestion() {
+    public void generateNewQuestion() {
         answer = questionCreateFunction();
+        // Clear the answer field
+        KeyboardInput.instance.clearText();
     }
 }

@@ -27,6 +27,13 @@ public class GameOver : MonoBehaviour
         ConfirmPopup.destroyPopupIfNeeded();
     }
 
+    public void continueGame() {
+        gameObject.SetActive(false);
+        MainGame.mainGame.generateNewQuestion();
+        MainGame.mainGame.resetGameOver();
+        TimerSlider.instance.resetTimer();
+    }
+
     public void mainMenu() {
         loadScene("MainMenu");
     }
