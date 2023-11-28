@@ -55,10 +55,14 @@ public class MainGame : MonoBehaviour
         // Check for gameOver
         if (gameMode == GameModes.GAME) {
 
+            var gameStatus = TimerSlider.instance.gameStatus();
             // GameOver is set to either true or false
-            gameOver |= TimerSlider.instance.gameStatus();
+            gameOver |= gameStatus;
             if (gameOver) {
                 GameOver.instance.gameOver(answer);
+                if (gameStatus) {
+                    wrongSound.Play();
+                }
             }
         }
     }
