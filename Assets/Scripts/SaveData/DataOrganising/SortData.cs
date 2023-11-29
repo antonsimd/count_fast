@@ -8,6 +8,8 @@ using SortType = DataVariables.SortTypes;
 
 public class SortData : MonoBehaviour
 {
+    const string sortedText = "Sorted By: ";
+
     [SerializeField] TextMeshProUGUI sortText;
 
     public static SortData instance;
@@ -59,7 +61,7 @@ public class SortData : MonoBehaviour
     void sortArray(IComparer comparer, SortType type, string text) {
         PlayerPrefs.SetString(DataVariables.sortTypeKey, type.ToString());
 
-        sortText.text = text;
+        sortText.text = sortedText + text;
 
         SaveData data = DataManager.getSaveData();
         if (data.saveData.Length == 0) {
