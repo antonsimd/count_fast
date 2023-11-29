@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuActions : MonoBehaviour
 {
-    const string developerWebsite = "google.com";
+    const string developerWebsite = "https://www.google.com/";
     [SerializeField] Animator transition;
 
     public void additionGame() {
