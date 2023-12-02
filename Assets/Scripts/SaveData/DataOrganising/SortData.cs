@@ -69,9 +69,32 @@ public class SortData : MonoBehaviour
         }
 
         // Sort array by the given comparer, save the result to JSON
-        Array.Sort(data.saveData, comparer);
+        bubbleSort(data.saveData, comparer);
         DataManager.save();
         
         LoadTable.instance.resetScoreboard();
+    }
+
+    void bubbleSort(SaveGameInstance[] array, IComparer comparer) {
+        int n = array.Length;
+        bool swapped;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (comparer.Compare(array[j], array[j + 1]) == 1) {
+                    var temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            if (!swapped) {
+                break;
+            }
+        }
     }
 }
