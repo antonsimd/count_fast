@@ -28,7 +28,7 @@ public class DifficultyInput : MonoBehaviour
     static string minNumberKey = MIN_AS_NUMBER;
     static string maxNumberKey = MAX_AS_NUMBER;
     const int DEFAULT_MIN = 0;
-    const int DEFAULT_MAX = 100;
+    const int DEFAULT_MAX = 10;
 
     // Variables for storing min and max inputs
     TMP_InputField minInputText;
